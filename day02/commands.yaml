@@ -1,0 +1,42 @@
+#to pull the state file in terminal and see it's content
+terraform state pull
+
+#to pull state file and put it's content into file 
+terraform state pull > terraform.tfstate
+
+#to list all resources in the statefile 
+terraform state list 
+
+#to view specific resource 
+terraform state show aws_subnet.main
+
+#to mange manually created resource by terraform 
+terraform import aws_vpc.main vpc-f17ee #(vpc-id from console)
+
+#to remove sepcific resource from state file 
+terraform state rm aws_vpc.main
+
+#to change block name in statefile so that no need to distroy and apply again 
+terraform state rm aws_vpc.main aws_vpc.nti
+
+#to draw a graph of already create infra 
+terraform graph | dot -Tsvg > graph.svg
+
+#to make your code more clean and human readable 
+terraform fmt
+
+#to apply specific variables file 
+terraform apply -var-file=prod.tfvars
+
+#to check your workspace
+terraform workspace show 
+
+#to make new workspace
+terraform workspace new prod
+
+#to list all worksspace 
+terraform workspace list 
+
+#to select specific workspace 
+terraform workspace select prod
+
